@@ -1,4 +1,4 @@
-module github.com/freeeve/uci
+module github.com/percentcer/uci
 
 go 1.13
 
