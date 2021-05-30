@@ -158,6 +158,15 @@ func (eng *Engine) SetMoves(moves string) error {
 	return err
 }
 
+func (eng *Engine) SetMovesFromPosition(moves string, fen string) error {
+	_, err := eng.stdin.WriteString(fmt.Sprintf("position fen %s moves %s\n", fen, moves))
+	if err != nil {
+		return err
+	}
+	err = eng.stdin.Flush()
+	return err
+}
+
 // Go can use search moves, depth and time to move as filter  for the results being returned.
 // see http://wbec-ridderkerk.nl/html/UCIProtocol.html
 func (eng *Engine) Go(depth int, searchmoves string, movetime int64, resultOpts ...uint) (*Results, error) {
